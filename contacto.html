@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contacto y cita previa | Clínica DIW Alicante</title>
+  <meta name="description" content="Contacta con Clínica DIW en Alicante: formulario de contacto, teléfono 965 000 000, dirección y horario para pedir tu cita dental.">
+  <meta name="keywords" content="contacto clínica dental, cita dentista Alicante, teléfono clínica dental">
+  <meta name="author" content="David Gómez Barberá">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#76E5FC">
+  <link rel="canonical" href="https://davidgb-2004.github.io/diseno-interfaces-web-26-27-practica-3-css-inicial-davidgb-2004/contacto.html">
+  <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_ES">
+  <meta property="og:site_name" content="Clínica DIW">
+  <meta property="og:title" content="Contacto y cita previa | Clínica DIW Alicante">
+  <meta property="og:description" content="Contacta con Clínica DIW en Alicante: formulario de contacto, teléfono 965 000 000, dirección y horario para pedir tu cita dental.">
+  <meta property="og:url" content="https://davidgb-2004.github.io/diseno-interfaces-web-26-27-practica-3-css-inicial-davidgb-2004/contacto.html">
+  <meta property="og:image" content="https://davidgb-2004.github.io/diseno-interfaces-web-26-27-practica-3-css-inicial-davidgb-2004/assets/images/og-clinica-diw.png">
+  <meta property="og:image:alt" content="Logotipo de Clínica DIW, clínica dental en Alicante">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Contacto y cita previa | Clínica DIW Alicante">
+  <meta name="twitter:description" content="Contacta con Clínica DIW en Alicante: formulario de contacto, teléfono 965 000 000, dirección y horario para pedir tu cita dental.">
+  <meta name="twitter:image" content="https://davidgb-2004.github.io/diseno-interfaces-web-26-27-practica-3-css-inicial-davidgb-2004/assets/images/og-clinica-diw.png">
+  <link rel="preload" href="assets/webfonts/poppins-700.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/webfonts/open-sans-variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/print.css" media="print">
+</head>
+<body>
+  <a class="salto" href="#contenido">Saltar al contenido</a>
+  <header class="cabecera">
+    <div class="contenedor">
+      <a class="logo" href="index.html" title="Ir a la página de inicio"><img src="assets/images/logo.svg" alt="Clínica DIW, ir al inicio" width="131" height="56"></a>
+      <p class="nombre-tienda">Clínica DIW</p>
+    </div>
+  </header>
+  <nav class="menu" aria-label="Menú principal">
+    <ul>
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="servicios.html">Servicios</a></li>
+      <li><a href="contacto.html" aria-current="page">Contacto</a></li>
+      <li><a href="flex.html">Flex</a></li>
+    </ul>
+  </nav>
+
+  <main id="contenido" class="contenedor principal principal--simple">
+    <section aria-labelledby="titulo-contacto">
+      <h1 id="titulo-contacto">Contacta con Clínica DIW</h1>
+      <p>Rellena el formulario y te responderemos lo antes posible. Todos los campos son obligatorios.</p>
+      <div class="contacto">
+        <form id="form-contacto" class="formulario" aria-labelledby="titulo-form">
+          <h2 id="titulo-form">Formulario de contacto</h2>
+          <fieldset class="grupo">
+            <legend>Datos personales</legend>
+            <div class="campo">
+              <label for="nombre">Nombre</label>
+              <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" maxlength="40"
+                     pattern="[\p{L}0-9]+( [\p{L}0-9]+)*"
+                     title="Solo letras y números (máximo 40 caracteres)" autocomplete="name" required autofocus>
+              <span class="ayuda">Solo letras y números, máximo 40 caracteres.</span>
+            </div>
+            <div class="campo">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" placeholder="nombre@correo.com" autocomplete="email" required>
+            </div>
+            <div class="campo">
+              <label for="edad">Edad</label>
+              <input type="number" id="edad" name="edad" placeholder="Entre 18 y 99" min="18" max="99" step="1" inputmode="numeric" required>
+            </div>
+            <div class="campo">
+              <label for="telefono">Teléfono</label>
+              <input type="tel" id="telefono" name="telefono" placeholder="600123456" pattern="[0-9]{9}"
+                     title="9 dígitos, sin espacios" autocomplete="tel" required>
+            </div>
+          </fieldset>
+          <fieldset class="grupo">
+            <legend>Tu consulta</legend>
+            <div class="campo campo--ancho">
+              <label for="consulta">Consulta</label>
+              <textarea id="consulta" name="consulta" placeholder="Cuéntanos en qué podemos ayudarte" rows="5" required></textarea>
+            </div>
+            <div class="campo campo--check campo--ancho">
+              <input type="checkbox" id="privacidad" name="privacidad" required>
+              <label for="privacidad">He leído y acepto la <a href="politica-privacidad.html">política de privacidad y cookies</a>.</label>
+            </div>
+          </fieldset>
+          <div>
+            <button type="submit" class="boton">Enviar consulta</button>
+          </div>
+          <p id="mensaje-ok" class="mensaje-ok" role="status" hidden>¡Gracias! Hemos recibido tu consulta y te contactaremos pronto.</p>
+        </form>
+        <section class="datos-contacto" aria-labelledby="titulo-datos">
+          <h2 id="titulo-datos">Datos de contacto</h2>
+          <address>
+            <p><strong>Dirección</strong><br>Calle Mayor, 1, 03002 Alicante</p>
+            <p><strong>Teléfono</strong><br><a href="tel:+34965000000">965 000 000</a></p>
+            <p><strong>Email</strong><br><a href="mailto:info@clinicadiw.example">info@clinicadiw.example</a></p>
+          </address>
+          <p><strong>Horario</strong><br>Lunes a viernes, de 9:00 a 20:00</p>
+          <a class="boton" href="tel:+34965000000">Llamar ahora</a>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <footer class="pie">
+    <div class="contenedor">
+      <div class="pie-rejilla">
+        <div>
+          <h2>Clínica DIW</h2>
+          <p>Calle Mayor, 1, 03002 Alicante</p>
+          <p>Tel. <a href="tel:+34965000000">965 000 000</a></p>
+          <h2>Síguenos</h2>
+          <ul class="redes">
+            <li><a href="https://wa.me/34965000000" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp de Clínica DIW"><img src="assets/images/icono-whatsapp.svg" alt="" width="22" height="22"></a></li>
+            <li><a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram de Clínica DIW"><img src="assets/images/icono-instagram.svg" alt="" width="22" height="22"></a></li>
+            <li><a href="https://x.com/" target="_blank" rel="noopener noreferrer" aria-label="X de Clínica DIW"><img src="assets/images/icono-x.svg" alt="" width="22" height="22"></a></li>
+            <li><a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Facebook de Clínica DIW"><img src="assets/images/icono-facebook.svg" alt="" width="22" height="22"></a></li>
+          </ul>
+        </div>
+        <div class="mapa">
+          <h2>Dónde estamos</h2>
+          <iframe title="Mapa con la ubicación de Clínica DIW en Alicante" src="https://www.openstreetmap.org/export/embed.html?bbox=-0.4910%2C38.3402%2C-0.4710%2C38.3502&amp;layer=mapnik&amp;marker=38.3452%2C-0.4810" loading="lazy"></iframe>
+          <p><a href="https://www.openstreetmap.org/?mlat=38.3452&amp;mlon=-0.4810#map=17/38.3452/-0.4810" target="_blank" rel="noopener noreferrer">Cómo llegar (ver mapa más grande)</a></p>
+        </div>
+      </div>
+      <p class="copy">&copy; 2026 Clínica DIW · <a href="politica-privacidad.html">Política de privacidad y cookies</a></p>
+    </div>
+  </footer>
+  <a class="whatsapp-flotante" href="https://wa.me/34965000000" target="_blank" rel="noopener noreferrer" aria-label="Escríbenos por WhatsApp"><img src="assets/images/icono-whatsapp.svg" alt="" width="32" height="32"></a>
+  <script src="assets/js/main.js" defer></script>
+</body>
+</html>

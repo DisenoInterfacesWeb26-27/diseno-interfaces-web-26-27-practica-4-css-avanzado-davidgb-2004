@@ -1,0 +1,49 @@
+/* Maqueta responsive con floats y media queries (sin Flexbox ni Grid) */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: #e5e5e5; font-size: 14px; }
+#contenedor { margin: 0 auto; padding: 8px; overflow: hidden; }
+
+/* Todas las cajas comparten aspecto */
+#cabecera, #menu, #nav1, #nav2, #cuerpo, #banner, #pie {
+  background: #d9e8ff; border: 1px solid #7a99c4;
+  text-align: center; margin-bottom: 10px;
+}
+/* Sin position:fixed del resto de la web: el nav de la maqueta es normal */
+#menu, #nav1, #nav2 { position: static; width: auto; display: block; box-shadow: none; color: inherit; }
+
+#cabecera { height: 70px; line-height: 68px; }
+#menu { height: 50px; line-height: 48px; }
+#principal, #derecha { overflow: hidden; }
+#pie { height: 50px; line-height: 48px; clear: both; margin-bottom: 0; }
+
+/* ORDENADOR: a partir de 1200px - Arial */
+@media (min-width: 1200px) {
+  body { font-family: Arial, Helvetica, sans-serif; }
+  #contenedor { width: 1100px; }
+  #nav1 { float: left; width: 15%; height: 360px; line-height: 358px; }
+  #derecha { float: right; width: 83%; }
+  #nav2 { height: 50px; line-height: 48px; }
+  #cuerpo { float: left; width: 79%; height: 290px; line-height: 288px; }
+  #banner { float: right; width: 19%; height: 290px; line-height: 288px; }
+}
+
+/* TABLET: a partir de 700px y hasta 1200px - Calibri */
+@media (min-width: 701px) and (max-width: 1199px) {
+  body { font-family: Calibri, Carlito, sans-serif; }
+  #contenedor { width: 96%; }
+  #derecha { overflow: visible; }
+  #nav1 { float: left; width: 15%; height: 220px; line-height: 218px; }
+  #nav2 { display: none; }
+  #cuerpo { margin-left: 17%; height: 220px; line-height: 218px; }
+  #banner { clear: both; height: 50px; line-height: 48px; }
+}
+
+/* MÓVIL: hasta 700px - Times New Roman */
+@media (max-width: 700px) {
+  body { font-family: "Times New Roman", Times, serif; }
+  #contenedor { width: 100%; }
+  #nav1, #nav2 { height: 50px; line-height: 48px; }
+  #nav1 { margin-bottom: 6px; }
+  #cuerpo { height: 100px; line-height: 98px; }
+  #banner { height: 50px; line-height: 48px; }
+}

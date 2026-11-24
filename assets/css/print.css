@@ -1,0 +1,4 @@
+/* Actividad 4.2.1: al imprimir no se muestran header, nav, aside ni footer */
+header, nav, aside, footer, .whatsapp-flotante { display: none; }
+body { padding-top: 0; }
+.principal { display: block; }

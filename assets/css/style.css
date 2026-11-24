@@ -1,0 +1,1157 @@
+/* ==========================================================================
+   CLÍNICA DIW - Hoja de estilos principal (Práctica 3 · CSS básico)
+   Basada en la guía de estilo de la unidad 1.
+
+   ÍNDICE
+    0. Fuentes locales (@font-face)
+    1. Variables de diseño                      (guía de estilo)
+    2. Reset universal                          (Actividad 3.1)
+    3. Base: documento y unidades en em         (Actividades 4.1, 5.1, 6.1, 7.1)
+    4. Etiquetas de sección                     (Actividades 5.1, 6.1, 7.1)
+    5. Etiquetas de contenido y texto           (Actividades 5.1, 6.1, 7.1)
+    6. Menú de navegación como botonera         (Actividades 8.1, 12.1)
+    7. Listas del aside                         (Actividad 8.1)
+    8. Tablas                                   (Actividades 5.1, 6.1, 7.1, 11.1, 13.1)
+    9. Formularios                              (Actividades 5.1, 6.1, 7.1, 18.1)
+   10. Estados de los enlaces                   (Actividad 13.1)
+   11. Botón flotante de WhatsApp               (Actividad 12.1)
+   12. Diseño adaptable (media queries)
+   ========================================================================== */
+
+
+/* ==========================================================================
+   0. FUENTES LOCALES
+   ========================================================================== */
+@font-face {
+  font-family: "Poppins";
+  src: url("../webfonts/poppins-500.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Poppins";
+  src: url("../webfonts/poppins-600.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Poppins";
+  src: url("../webfonts/poppins-700.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Open Sans";
+  src: url("../webfonts/open-sans-variable.woff2") format("woff2");
+  font-weight: 400 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+
+/* ==========================================================================
+   1. VARIABLES DE DISEÑO
+   ========================================================================== */
+:root {
+  /* Paleta de la guía de estilo */
+  --cian: #76e5fc;
+  --cian-claro: #bff3fd;
+  --oscuro: #1a1423;
+  --rosa: #fbcaef;
+  --gris: #f3f6f8;
+  --blanco: #ffffff;
+
+  /* Colores auxiliares (derivados de la paleta) */
+  --borde: #dde3e8;
+  --borde-campo: #8a8f98;
+  --texto-suave: #4b4555;
+  --visitado: #5a3d75;
+  --error: #b3261e;
+  --error-fondo: #fdf0ef;
+  --correcto: #0b6b7d;
+
+  /* Tipografías */
+  --fuente-titulos: "Poppins", Arial, sans-serif;
+  --fuente-texto: "Open Sans", Arial, sans-serif;
+
+  /* Forma y espaciado */
+  --radio: 0.75em;
+  --sombra: 0 4px 16px rgb(26 20 35 / 8%);
+  --ancho-maximo: 1200px;
+  --alto-menu: 3.5rem;
+}
+
+
+/* ==========================================================================
+   2. RESET UNIVERSAL (Actividad 3.1)
+   Todo elemento parte con margen interno y externo de 0 px.
+   ========================================================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+/* ==========================================================================
+   3. BASE: DOCUMENTO Y UNIDADES EN EM (Actividad 4.1)
+   Todos los tamaños de texto se expresan en em, relativos al tamaño base
+   del navegador (1em = 16 px por defecto).
+   ========================================================================== */
+html {
+  /* El menú está fijo: se reserva su altura al saltar a un ancla */
+  scroll-padding-top: calc(var(--alto-menu) + 1rem);
+}
+
+body {
+  /* Color y fondo (5.1) */
+  color: var(--oscuro);
+  background-color: var(--blanco);
+
+  /* Fuente (7.1) */
+  font-family: var(--fuente-texto);
+  font-size: 1em;
+  font-weight: 400;
+  font-style: normal;
+  font-variant: normal;
+
+  /* Texto (6.1) */
+  line-height: 1.625;
+  text-align: left;
+  text-transform: none;
+  letter-spacing: normal;
+
+  /* El menú es position: fixed, así que se deja su hueco arriba (12.1) */
+  padding-top: var(--alto-menu);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Enlace "saltar al contenido", solo visible al enfocarlo con teclado */
+.salto {
+  position: absolute;
+  top: 0;
+  left: -9999px;
+  z-index: 200;
+  padding: 0.5em 1em;
+  color: var(--blanco);
+  background-color: var(--oscuro);
+}
+
+.salto:focus {
+  left: 0;
+}
+
+/* Anillo de foco de la guía de estilo: cian 2 px */
+:focus-visible {
+  outline: 2px solid var(--cian);
+  outline-offset: 2px;
+}
+
+/* Contenedor centrado de ancho máximo 1200 px */
+.contenedor {
+  width: 100%;
+  max-width: var(--ancho-maximo);
+  margin-inline: auto;
+  padding-inline: 1.5em;
+}
+
+
+/* ==========================================================================
+   4. ETIQUETAS DE SECCIÓN
+   header, nav, main, section, article, aside, footer, address, h1-h4
+   ========================================================================== */
+
+/* ----- header ----- */
+header {
+  /* color y fondo */
+  color: var(--oscuro);
+  background-color: var(--blanco);
+  border-bottom: 1px solid var(--borde);
+  /* texto */
+  text-align: left;
+  line-height: 1.25;
+}
+
+header .contenedor {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  padding-block: 0.75em;
+}
+
+.logo {
+  display: inline-flex;
+  line-height: 0;
+}
+
+.logo img {
+  width: auto;
+  height: 3.5em;
+}
+
+.nombre-tienda {
+  /* fuente */
+  font-family: var(--fuente-titulos);
+  font-size: 1.5em;
+  font-weight: 700;
+  font-style: normal;
+  font-variant: normal;
+  /* texto */
+  line-height: 1.25;
+  letter-spacing: 0.01em;
+  margin-bottom: 0;
+}
+
+/* ----- nav (los estilos de la botonera están en la sección 6) ----- */
+
+/* ----- main, section, article ----- */
+main {
+  color: var(--oscuro);
+  background-color: var(--blanco);
+}
+
+.principal {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 18.75em;
+  gap: 2em;
+  padding-block: 2.5em;
+}
+
+.principal--simple {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+section {
+  color: var(--oscuro);
+  background-color: transparent;
+  line-height: 1.625;
+}
+
+section > h2 {
+  margin-top: 1.5em;
+}
+
+article {
+  color: var(--oscuro);
+  background-color: transparent;
+}
+
+/* Bloque de presentación de la portada */
+.intro {
+  margin-bottom: 1.5em;
+  padding: 2em;
+  color: var(--oscuro);
+  background-color: var(--rosa);
+  border-radius: var(--radio);
+}
+
+.intro p {
+  font-size: 1.125em;
+}
+
+/* Rejilla de tarjetas de tratamientos */
+.tarjetas {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(16.25em, 1fr));
+  gap: 1.5em;
+  margin-bottom: 1em;
+}
+
+.tarjeta {
+  overflow: hidden;
+  color: var(--oscuro);
+  background-color: var(--blanco);
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+  box-shadow: var(--sombra);
+}
+
+.tarjeta img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  background-color: var(--rosa);
+}
+
+.tarjeta div {
+  padding: 1em 1.25em 1.25em;
+}
+
+.tarjeta h3 {
+  margin-bottom: 0.4em;
+}
+
+.tarjeta p {
+  margin-bottom: 0.75em;
+  font-size: 0.9375em;
+}
+
+/* ----- aside (contenedor; sus listas se estilan en la sección 7) ----- */
+aside {
+  align-self: start;
+  padding: 1.5em;
+  color: var(--oscuro);
+  background-color: var(--gris);
+  border-radius: var(--radio);
+  line-height: 1.5;
+}
+
+/* ----- address ----- */
+address {
+  color: var(--oscuro);
+  background-color: transparent;
+  font-family: var(--fuente-texto);
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.625;
+  text-align: left;
+}
+
+address p {
+  margin-bottom: 0.75em;
+}
+
+/* ----- footer ----- */
+footer {
+  padding-block: 2.5em 1.5em;
+  color: var(--blanco);
+  background-color: var(--oscuro);
+  font-size: 1em;
+  line-height: 1.5;
+  text-align: left;
+}
+
+footer h2 {
+  margin-top: 0;
+  color: var(--blanco);
+  font-size: 1.125em;
+}
+
+footer p {
+  margin-bottom: 0.75em;
+  color: var(--blanco);
+}
+
+.pie-rejilla {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
+  gap: 2em;
+  align-items: start;
+}
+
+footer .copy {
+  margin-top: 2.5em;
+  padding-top: 1em;
+  border-top: 1px solid rgb(255 255 255 / 20%);
+  font-size: 0.875em;
+  text-align: center;
+}
+
+/* Iconos de redes sociales */
+.redes {
+  display: flex;
+  gap: 0.75em;
+  margin: 0.5em 0 1.5em;
+  padding-left: 0;
+  list-style: none;
+}
+
+.redes a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75em;
+  height: 2.75em;
+  background-color: var(--cian);
+  border-radius: 50%;
+}
+
+.redes img {
+  width: 1.375em;
+  height: 1.375em;
+}
+
+/* Mapa del pie */
+.mapa iframe {
+  display: block;
+  width: 100%;
+  height: 17.5em;
+  background-color: var(--gris);
+  border: 0;
+  border-radius: var(--radio);
+}
+
+footer .mapa p {
+  margin: 0.75em 0 0;
+  font-size: 0.875em;
+}
+
+/* ----- Encabezados h1 - h4 ----- */
+h1,
+h2,
+h3,
+h4 {
+  /* color y fondo */
+  color: var(--oscuro);
+  background-color: transparent;
+  /* fuente */
+  font-family: var(--fuente-titulos);
+  font-style: normal;
+  font-variant: normal;
+  /* texto */
+  line-height: 1.25;
+  text-align: left;
+  text-transform: none;
+  margin-bottom: 0.5em;
+}
+
+h1 {
+  font-size: 3em;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+h2 {
+  font-size: 2em;
+  font-weight: 600;
+  letter-spacing: -0.005em;
+}
+
+h3 {
+  font-size: 1.375em;
+  font-weight: 600;
+  letter-spacing: normal;
+}
+
+h4 {
+  font-size: 1.125em;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+/* Encabezados dentro del aside y del pie */
+aside h2 {
+  font-size: 1.25em;
+}
+
+footer h2 {
+  color: var(--blanco);
+}
+
+
+/* ==========================================================================
+   5. ETIQUETAS DE CONTENIDO Y TEXTO
+   p, strong, em, small, span, ul, ol, li, img, a
+   ========================================================================== */
+p {
+  /* color y fondo */
+  color: var(--oscuro);
+  background-color: transparent;
+  /* fuente */
+  font-family: var(--fuente-texto);
+  font-size: 1em;
+  font-weight: 400;
+  font-style: normal;
+  font-variant: normal;
+  /* texto */
+  line-height: 1.625;
+  text-align: left;
+  text-indent: 0;
+  text-decoration: none;
+  margin-bottom: 1em;
+}
+
+strong,
+b {
+  color: var(--oscuro);
+  font-weight: 600;
+}
+
+em,
+i {
+  color: var(--oscuro);
+  font-style: italic;
+}
+
+small,
+.ayuda {
+  color: var(--texto-suave);
+  font-size: 0.8125em;
+  line-height: 1.5;
+}
+
+ul,
+ol {
+  color: var(--oscuro);
+  font-size: 1em;
+  line-height: 1.625;
+  padding-left: 1.25em;
+  margin-bottom: 1em;
+}
+
+li {
+  color: var(--oscuro);
+  font-size: 1em;
+  font-weight: 400;
+  text-align: left;
+}
+
+/* Enlaces: forma base (los estados :link, :visited, :hover y :active
+   están en la sección 10) */
+a {
+  font-family: inherit;
+  font-weight: 400;
+  text-decoration: underline;
+  text-decoration-color: var(--cian);
+  text-decoration-thickness: 0.15em;
+  text-underline-offset: 0.2em;
+}
+
+
+/* ==========================================================================
+   6. MENÚ DE NAVEGACIÓN COMO BOTONERA
+   Actividad 8.1: la lista de <nav> se convierte en una fila de botones.
+   Actividad 12.1: el menú queda fijo en la parte superior (position: fixed).
+   ========================================================================== */
+nav {
+  /* posición fija arriba del todo */
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: var(--alto-menu);
+  /* color y fondo */
+  color: var(--blanco);
+  background-color: var(--oscuro);
+  box-shadow: 0 6px 10px -2px rgb(26 20 35 / 45%); /* 4.6.1 sombra inferior */
+}
+
+nav ul {
+  /* botonera: elementos de lista en fila */
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 0.75em;
+  width: 100%;
+  max-width: var(--ancho-maximo);
+  margin: 0 auto;
+  padding: 0 1.5em;
+  list-style: none;
+}
+
+nav li {
+  display: block;
+  color: var(--blanco);
+  font-size: 1em;
+}
+
+nav a {
+  display: block;
+  padding: 0.4em 1.5em;
+  /* aspecto de botón */
+  border: 2px solid var(--cian);
+  border-radius: 999px;
+  /* fuente y texto */
+  font-family: var(--fuente-titulos);
+  font-size: 1em;
+  font-weight: 500;
+  font-style: normal;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+
+/* ==========================================================================
+   7. LISTAS DEL ASIDE (Actividad 8.1)
+   ========================================================================== */
+aside ul {
+  margin-bottom: 1.5em;
+  padding-left: 0;
+  list-style: none;
+}
+
+aside ul:last-child {
+  margin-bottom: 0;
+}
+
+aside li {
+  margin-bottom: 0.5em;
+  overflow: hidden;
+  background-color: var(--blanco);
+  border-left: 0.25em solid var(--cian);
+  border-radius: 0 var(--radio) var(--radio) 0;
+  line-height: 1.4;
+}
+
+aside li a {
+  display: block;
+  padding: 0.5em 0.75em;
+  font-size: 0.9375em;
+  text-decoration: none;
+}
+
+
+/* ==========================================================================
+   8. TABLAS
+   Actividad 11.1: título abajo, celdas ajustadas al texto, ancho 100 %,
+   border-collapse: collapse, bordes y márgenes, texto centrado.
+   ========================================================================== */
+.tabla-contenedor {
+  overflow-x: auto;
+  margin-bottom: 1.5em;
+}
+
+table {
+  /* ocupa el 100 % del contenedor padre */
+  width: 100%;
+  /* el ancho de cada celda se ajusta a su contenido */
+  table-layout: auto;
+  border-collapse: collapse;
+  /* bordes y márgenes */
+  margin: 1em 0;
+  border: 2px solid var(--oscuro);
+  /* color y fondo */
+  color: var(--oscuro);
+  background-color: var(--blanco);
+  /* fuente y texto */
+  font-family: var(--fuente-texto);
+  font-size: 1em;
+  line-height: 1.5;
+  text-align: center;
+}
+
+caption {
+  /* título en la parte de abajo */
+  caption-side: bottom;
+  padding-top: 0.75em;
+  /* color */
+  color: var(--texto-suave);
+  /* fuente y texto */
+  font-family: var(--fuente-titulos);
+  font-size: 1em;
+  font-weight: 600;
+  font-style: italic;
+  text-align: center;
+}
+
+th,
+td {
+  padding: 0.875em 1em;
+  border: 1px solid var(--borde-campo);
+  vertical-align: middle;
+  text-align: center;
+}
+
+th {
+  font-family: var(--fuente-titulos);
+  font-size: 1em;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+td {
+  font-variant-numeric: tabular-nums;
+}
+
+/* El precio no se parte en dos líneas */
+td:last-child {
+  white-space: nowrap;
+}
+
+/* Actividad 13.1: primera fila de la tabla (la de encabezados) */
+thead tr:first-child {
+  color: var(--blanco);
+  background-color: var(--oscuro);
+}
+
+/* Actividad 13.1: filas impares y pares del cuerpo con fondo distinto */
+tbody tr:nth-child(odd) {
+  background-color: var(--blanco);
+}
+
+tbody tr:nth-child(even) {
+  background-color: var(--gris);
+}
+
+tbody tr:hover {
+  background-color: var(--cian-claro);
+}
+
+
+/* ==========================================================================
+   9. FORMULARIOS (Actividad 18.1)
+   ========================================================================== */
+.contacto {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+  gap: 2em;
+  align-items: start;
+}
+
+form {
+  display: grid;
+  gap: 1.25em;
+  color: var(--oscuro);
+  background-color: transparent;
+}
+
+/* Agrupación de campos con <fieldset>: rejilla de dos columnas */
+fieldset {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25em 1.5em;
+  min-width: 0;
+  padding: 1.25em 1.5em 1.5em;
+  background-color: var(--blanco);
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+}
+
+legend {
+  padding-inline: 0.5em;
+  color: var(--oscuro);
+  font-family: var(--fuente-titulos);
+  font-size: 1.125em;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375em;
+}
+
+.campo--ancho {
+  grid-column: 1 / -1;
+}
+
+label {
+  color: var(--oscuro);
+  font-family: var(--fuente-texto);
+  font-size: 1em;
+  font-weight: 600;
+  line-height: 1.5;
+  text-align: left;
+}
+
+input,
+textarea,
+button {
+  font-family: var(--fuente-texto);
+  font-size: 1em;
+  font-style: normal;
+  line-height: 1.5;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 0.75em 1em;
+  color: var(--oscuro);
+  background-color: var(--blanco);
+  border: 1px solid var(--borde-campo);
+  border-radius: var(--radio);
+  text-align: left;
+}
+
+textarea {
+  min-height: 9em;
+  resize: vertical;
+}
+
+::placeholder {
+  color: var(--texto-suave);
+  opacity: 0.75;
+}
+
+/* Campo enfocado */
+input:focus,
+textarea:focus {
+  border-color: var(--oscuro);
+  outline: 2px solid var(--cian);
+  outline-offset: 1px;
+}
+
+/* Campo con contenido válido / inválido (solo cuando ya hay texto) */
+input:valid:not(:placeholder-shown),
+textarea:valid:not(:placeholder-shown) {
+  border-color: var(--correcto);
+}
+
+input:invalid:not(:placeholder-shown),
+textarea:invalid:not(:placeholder-shown) {
+  background-color: var(--error-fondo);
+  border-color: var(--error);
+}
+
+/* Casilla de privacidad */
+.campo--check {
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 0.625em;
+}
+
+.campo--check input {
+  flex: none;
+  width: 1.25em;
+  height: 1.25em;
+  margin-top: 0.25em;
+  accent-color: var(--oscuro);
+}
+
+.campo--check label {
+  font-weight: 400;
+}
+
+/* Botón de envío y botones de llamada a la acción (guía de estilo) */
+.boton {
+  display: inline-block;
+  padding: 0.75em 1.5em;
+  color: var(--blanco);
+  background-color: var(--oscuro);
+  border: 2px solid var(--oscuro);
+  border-radius: 999px;
+  font-family: var(--fuente-texto);
+  font-size: 1em;
+  font-weight: 600;
+  line-height: 1.5;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.boton:hover,
+.boton:focus-visible {
+  color: var(--oscuro);
+  background-color: var(--cian);
+  border-color: var(--cian);
+}
+
+.boton:active {
+  color: var(--oscuro);
+  background-color: var(--rosa);
+  border-color: var(--rosa);
+}
+
+.mensaje-ok {
+  padding: 1em 1.25em;
+  color: var(--oscuro);
+  background-color: var(--cian);
+  border-radius: var(--radio);
+  font-weight: 600;
+}
+
+/* Cuadro lateral con los datos de contacto */
+.datos-contacto {
+  padding: 1.5em;
+  color: var(--oscuro);
+  background-color: var(--gris);
+  border-radius: var(--radio);
+}
+
+.datos-contacto h2 {
+  margin-top: 0;
+  font-size: 1.5em;
+}
+
+.datos-contacto > p {
+  margin-bottom: 1em;
+}
+
+/* Páginas de texto legal */
+.legal {
+  max-width: 50em;
+}
+
+.legal h2 {
+  margin-top: 1.25em;
+  font-size: 1.5em;
+}
+
+
+/* ==========================================================================
+   10. ESTADOS DE LOS ENLACES (Actividad 13.1)
+   Orden obligatorio: :link, :visited, :hover, :active (LVHA).
+   Se usan selectores descendientes para cada zona de la web.
+   ========================================================================== */
+
+/* ----- Enlaces dentro de entradas / contenido (main) ----- */
+main a:link {
+  color: var(--oscuro);
+}
+
+main a:visited {
+  color: var(--visitado);
+}
+
+main a:hover {
+  color: var(--oscuro);
+  background-color: var(--cian);
+  text-decoration-color: var(--oscuro);
+}
+
+main a:active {
+  color: var(--oscuro);
+  background-color: var(--rosa);
+}
+
+/* ----- Enlaces del nav (botonera) ----- */
+nav a:link {
+  color: var(--blanco);
+  background-color: transparent;
+}
+
+nav a:visited {
+  color: var(--blanco);
+  background-color: transparent;
+}
+
+nav a:hover {
+  color: var(--oscuro);
+  background-color: var(--cian);
+}
+
+nav a:active {
+  color: var(--oscuro);
+  background-color: var(--rosa);
+  border-color: var(--rosa);
+}
+
+/* Página actual: botón relleno */
+nav a[aria-current="page"] {
+  color: var(--oscuro);
+  background-color: var(--cian);
+}
+
+/* ----- Enlaces del aside ----- */
+aside a:link {
+  color: var(--oscuro);
+}
+
+aside a:visited {
+  color: var(--visitado);
+}
+
+aside a:hover {
+  color: var(--oscuro);
+  background-color: var(--cian);
+}
+
+aside a:active {
+  color: var(--oscuro);
+  background-color: var(--rosa);
+}
+
+/* ----- Enlaces del footer (fondo oscuro: colores claros) ----- */
+footer a:link {
+  color: var(--blanco);
+}
+
+footer a:visited {
+  color: var(--rosa);
+}
+
+footer a:hover {
+  color: var(--cian);
+  text-decoration-color: var(--blanco);
+}
+
+footer a:active {
+  color: var(--rosa);
+}
+
+/* ----- Botones tipo enlace (.boton): ganan por especificidad ----- */
+.boton:link,
+.boton:visited {
+  color: var(--blanco);
+  background-color: var(--oscuro);
+}
+
+.boton:link:hover,
+.boton:visited:hover {
+  color: var(--oscuro);
+  background-color: var(--cian);
+}
+
+.boton:link:active,
+.boton:visited:active {
+  color: var(--oscuro);
+  background-color: var(--rosa);
+}
+
+/* ----- Iconos de redes sociales ----- */
+.redes a:hover {
+  background-color: var(--rosa);
+}
+
+.redes a:active {
+  background-color: var(--blanco);
+}
+
+
+/* ==========================================================================
+   11. BOTÓN FLOTANTE DE WHATSAPP (Actividad 12.1)
+   Fijo en la esquina inferior derecha del documento.
+   ========================================================================== */
+.whatsapp-flotante {
+  position: fixed;
+  right: 1.25rem;
+  bottom: 1.25rem;
+  z-index: 90;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  background-color: var(--cian);
+  border-radius: 50%;
+  box-shadow: 0 4px 12px rgb(26 20 35 / 30%);
+}
+
+.whatsapp-flotante img {
+  width: 2rem;
+  height: 2rem;
+}
+
+.whatsapp-flotante:hover {
+  background-color: var(--rosa);
+}
+
+.whatsapp-flotante:active {
+  background-color: var(--blanco);
+}
+
+
+/* ==========================================================================
+   12. DISEÑO ADAPTABLE
+   Puntos de ruptura: 700 px (móvil) y 1200 px (ordenador)
+   ========================================================================== */
+@media (max-width: 700px) {
+  .contenedor {
+    padding-inline: 1em;
+  }
+
+  nav ul {
+    padding-inline: 1em;
+    gap: 0.5em;
+  }
+
+  nav a {
+    padding-inline: 1em;
+  }
+
+  .principal,
+  .contacto,
+  .pie-rejilla {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  fieldset {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  h1 {
+    font-size: 2.25em;
+  }
+
+  h2 {
+    font-size: 1.625em;
+  }
+}
+
+/* Móviles estrechos (320 px): el menú fijo no tiene scroll, así que los
+   botones se compactan para que quepan Inicio, Servicios y Contacto */
+@media (max-width: 400px) {
+  nav ul {
+    gap: 0.375em;
+    padding-inline: 0.5em;
+  }
+
+  nav a {
+    padding-inline: 0.75em;
+    font-size: 0.875em;
+    letter-spacing: 0;
+  }
+}
+
+
+/* ==========================================================================
+   13. TABLET (701 px - 1199 px) - Actividad 1.2
+   Una sola columna: el aside pasa debajo y sus enlaces en dos columnas.
+   ========================================================================== */
+@media (min-width: 701px) and (max-width: 1199px) {
+  .contenedor { max-width: 960px; }
+  .principal { grid-template-columns: minmax(0, 1fr); }
+  .lateral ul { columns: 2; }
+  .tarjetas { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* ==========================================================================
+   14. EFECTOS (Actividades 4.7.1, 5.3.1, 5.4.1)
+   ========================================================================== */
+/* 4.7.1 Imágenes sin atributo alt: borde rojo */
+img:not([alt]) { border: 3px solid red; }
+
+/* 4.7.1 Enlaces a PDF: icono detrás del enlace */
+a[href$=".pdf"]::after {
+  content: url("https://www.shareicon.net/data/16x16/2016/08/13/808584_document_512x512.png");
+  margin-left: 0.4em;
+  vertical-align: middle;
+}
+
+/* 5.3.1 Transiciones en botones del menú y botones de acción */
+.boton, nav a {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+}
+.boton:hover { transform: translateY(-2px); }
+
+/* 5.4.1 Transformación: las tarjetas de tratamientos se agrandan y giran un poco */
+.tarjeta { transition: transform 0.3s ease; }
+.tarjeta:hover { transform: scale(1.03) rotate(-1deg); }
+
+/* ==========================================================================
+   15. FLEXBOX (Actividad 4.11.1) - página flex.html
+   ========================================================================== */
+.flex-contenedor {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  gap: 1em;
+  min-height: 20em;
+  margin-top: 1.5em;
+  padding: 1.5em;
+  background-color: var(--gris);
+  border-radius: var(--radio);
+}
+.flex-caja {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 10em;
+  height: 6em;
+  padding: 0.5em;
+  text-align: center;
+  font-family: var(--fuente-titulos);
+  font-weight: 600;
+  background-color: var(--cian);
+  border-radius: var(--radio);
+}
+.flex-caja--alta { height: 10em; background-color: var(--rosa); }

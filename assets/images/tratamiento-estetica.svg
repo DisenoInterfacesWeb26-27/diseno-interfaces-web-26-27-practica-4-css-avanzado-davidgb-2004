@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" role="img" aria-label="Odontología estética">
+  <rect width="400" height="300" fill="#BFF3FD"/>
+  <circle cx="200" cy="140" r="86" fill="#FFFFFF" opacity="0.55"/>
+  <path d="M150 105c0-14 10-22 25-22 8 0 12 4 25 4s17-4 25-4c15 0 25 8 25 22 0 22-12 30-12 56 0 18-8 36-15 36s-8-22-19-22-12 22-19 22-15-18-15-36c0-26-10-34-10-56z" fill="#FFFFFF" stroke="#1A1423" stroke-width="5" stroke-linejoin="round"/>
+  <path d="M170 128c8 10 52 10 60 0" fill="none" stroke="#1A1423" stroke-width="5" stroke-linecap="round"/>
+  <text x="200" y="272" text-anchor="middle" font-family="Poppins, Arial, sans-serif" font-size="24" font-weight="600" fill="#1A1423">Odontología estética</text>
+</svg>
